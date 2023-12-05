@@ -6,7 +6,7 @@
 
 int main(int argc, char const *argv[]){
 	int size;
-	FILE* inp = fopen("day1inp.txt", "r");
+	FILE* inp = fopen("inp.txt", "r");
 	fseek(inp, 0, SEEK_END);
 	size = ftell(inp);
 	char* str = malloc(size * sizeof(char));

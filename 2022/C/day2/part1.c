@@ -8,7 +8,7 @@ enum Rps map_rps(char);
 enum Outcome determine_win(enum Rps, enum Rps);
 
 int main(int argc, char const *argv[]){
-	FILE* inp = fopen("day2inp.txt", "r");
+	FILE* inp = fopen("inp.txt", "r");
 	char opp_inp, me_inp;
 	char line[5];
 	int opp, me, score = 0;
