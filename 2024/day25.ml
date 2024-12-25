@@ -1,8 +1,8 @@
 let split_l c l =
   let rec inner l acc =
     match l with
-    | [] -> [acc]
-    | x::v -> if String.equal x c then acc :: (inner v []) else inner v (x::acc)
+    | [] -> [List.rev acc]
+    | x::v -> if String.equal x c then (List.rev acc) :: (inner v []) else inner v (x::acc)
   in
   inner l [];;
 
@@ -38,13 +38,9 @@ let parse file =
   let keys = ref [] in
   List.iter (fun x ->
     let cnt = List.hd x |> explode |> count in
-    (*Somehow lock and keys are reved*)
     let block = parse_block x in
-    if cnt = 0 then locks := block :: !locks
+    if cnt = 5 then locks := block :: !locks
     else keys := block :: !keys
-    (*if cnt = 0 then print_string "lock: " else print_string "key: ";*)
-    (*let (a,b,c,d,e) = parse_block x in*)
-    (*Printf.printf "%d,%d,%d,%d,%d\n" a b c d e;*)
   ) l;
   (!locks, !keys);;
 
